@@ -1,6 +1,6 @@
 1-This app was built by beginner-level programmers, so you might encounter some bugs or issues.
 
-2-This app works similarly to ransomware (not sure how to spell it), but in a good way, allowing you to protect your files from curious kids or maybe even your wife.
+2-This app works similarly to ransomware (not sure how to spell it), but in a good way, allowing you to protect your files from curious kids or even your wife.
 
 3-IMPORTANT: Always remember your password! If you forget it, you will lose access to your files forever.
 
