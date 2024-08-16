@@ -1,0 +1,6 @@
+1- pip pyinstaller: 
+                   1. cd to directory that contains your .py file
+                   2. pyinstaller:
+                                  -F   (all in 1 file)
+                                  -w   (removes terminal window)
+                                  -i icon.ico(adds custom icon to .exe) clock.py(name of your main python file)
