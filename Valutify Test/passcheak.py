@@ -14,6 +14,11 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap, QIcon
 import re 
 
+
+
+
+
+
 #كلاسات و دوال
 class VaultifyApp(QWidget):
     #main
@@ -64,14 +69,39 @@ class VaultifyApp(QWidget):
         layout.addWidget(self.timer_label)
 
         self.setLayout(layout)
-        self.show()
+        self.show() 
+
+    def passcheak(self, password):
+    
+      if len(password) < 8:
+         QMessageBox.warning(self, 'Error', 'Password should be at least 8 characters.')
+         return False
+
+   
+      if not re.search(r'[a-z]', password):
+         QMessageBox.warning(self, 'Error', 'Password should have at least one lowercase letter.')
+         return False
+
+  
+      if not re.search(r'[A-Z]', password):
+         QMessageBox.warning(self, 'Error', 'Password should have at least one uppercase letter.')
+         return False
+
+   
+      if not re.search(r'[!@#$%^&*(),.?":{}|<>]', password):
+          QMessageBox.warning(self, 'Error', 'Password should have at least one symbol.')
+          return False
+
+      return True
+    
     #تشفير
     def encrypt(self):
         folder = self.folder_input.text()
         password = self.pass_input.text()
-        #بتسوي ملف او بتستعمله
-        if not os.path.exists(folder):
-            os.makedirs(folder)
+
+        if not self.passcheak(password):
+          return
+
 
         # التحقق من وجود المفتاح
         if not os.path.exists(os.path.join(folder, "thekey.key")):
@@ -101,6 +131,7 @@ class VaultifyApp(QWidget):
     def decrypt(self):
         folder = self.folder_input.text()
         password = self.pass_input.text()
+        
         #في حال ماكان في ملف 
         if not os.path.exists(folder):
             QMessageBox.warning(self, 'Error', 'No Foolder with that name please create one or choose an exsiting one.')

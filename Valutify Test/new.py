@@ -8,11 +8,16 @@ import hashlib
 #مكتبة تشفير
 from cryptography.fernet import Fernet
 #مكاتب واجهات
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QMessageBox, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QMessageBox, QVBoxLayout , QFileDialog
 from PyQt5.QtCore import QTimer
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap, QIcon
 import re 
+
+
+
+
+
 
 #كلاسات و دوال
 class VaultifyApp(QWidget):
@@ -50,7 +55,12 @@ class VaultifyApp(QWidget):
         layout.addWidget(self.pass_label)
         layout.addWidget(self.pass_input)
 
-        self.encrypt_button = QPushButton('Encrypt', self)
+        self.choos = QPushButton('Choose Folder', self)
+        self.choos.setIcon(QIcon(r'C:\\Users\\DELL\\Downloads\\folder-open.png'))
+        self.choos.clicked.connect(self.create)
+        layout.addWidget(self.choos)
+
+        self.encrypt_button = QPushButton(' Encrypt  ', self)
         self.encrypt_button.setIcon(QIcon(r'c:\\Users\\DELL\\Downloads\\binary-lock.png'))
         self.encrypt_button.clicked.connect(self.encrypt)
         layout.addWidget(self.encrypt_button)
@@ -64,11 +74,42 @@ class VaultifyApp(QWidget):
         layout.addWidget(self.timer_label)
 
         self.setLayout(layout)
-        self.show()
+        self.show() 
+
+    def create(self):
+        folder = QFileDialog.getExistingDirectory(self, 'Select Folder')
+        if folder:
+            self.folder_input.setText(folder)
+
+    def passcheak(self, password):
+ 
+      if len(password) < 8:
+         QMessageBox.warning(self, 'Error', 'Password should be at least 8 characters.')
+         return False
+
+      if not re.search(r'[a-z]', password):
+         QMessageBox.warning(self, 'Error', 'Password should have at least one lowercase letter.')
+         return False
+
+      if not re.search(r'[A-Z]', password):
+         QMessageBox.warning(self, 'Error', 'Password should have at least one uppercase letter.')
+         return False
+
+      if not re.search(r'[!@#$%^&*(),.?":{}|<>]', password):
+          QMessageBox.warning(self, 'Error', 'Password should have at least one symbol.')
+          return False
+
+      return True
+
     #تشفير
     def encrypt(self):
         folder = self.folder_input.text()
         password = self.pass_input.text()
+
+        if not self.passcheak(password):
+          return
+
+        
         #بتسوي ملف او بتستعمله
         if not os.path.exists(folder):
             os.makedirs(folder)
@@ -101,6 +142,9 @@ class VaultifyApp(QWidget):
     def decrypt(self):
         folder = self.folder_input.text()
         password = self.pass_input.text()
+        
+        
+    
         #في حال ماكان في ملف 
         if not os.path.exists(folder):
             QMessageBox.warning(self, 'Error', 'No Foolder with that name please create one or choose an exsiting one.')
@@ -191,6 +235,6 @@ if __name__ == '__main__':
     #إنشاء تطبيق 
     app = QApplication(sys.argv)
     #إنشاء widget
-    ex = VaultifyApp()
+    w = VaultifyApp()
     #تشغيل التطبيق
     sys.exit(app.exec_())
