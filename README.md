@@ -31,7 +31,7 @@ Vaultify is a PyQt5 application designed to encrypt and decrypt files within a c
 
 ## Credits
 
-- **Project Leader**: Abdo Raz (BEDFTB) - [GitHub: IGNRaz](https://github.com/IGNRaz)
+- **Project Leader & Developer**: Abdo Raz (BEDFTB) - [GitHub: IGNRaz](https://github.com/IGNRaz)
 - **Co-Leader & UI Developer**: Zaid Alsalh (FEDFTB) - [GitHub: zaedalsalh](https://github.com/zaedalsalh)
 
 ## Disclaimer
