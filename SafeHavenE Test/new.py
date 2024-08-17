@@ -119,8 +119,8 @@ class SafeHavenE(QWidget):
         if not os.path.exists(os.path.join(folder, "thekey.key")):
             # إنشاء كلمة سر مشفرة
             hashed_password = hashlib.sha256(password.encode()).hexdigest()
-           # with open(os.path.join(folder, "password.txt"), "w") as passfile:
-              #  passfile.write(hashed_password)
+            with open(os.path.join(folder, "password.txt"), "w") as passfile:
+               passfile.write(hashed_password)
 
             # إنشاء مفتاح
             key = Fernet.generate_key()
