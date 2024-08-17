@@ -1,6 +1,6 @@
 # SafeHavenE V:1.0
 
-Vaultify is a PyQt5 application designed to encrypt and decrypt files within a chosen folder. This app offers an easy way to protect your sensitive data from unauthorized access, whether from curious children or others.
+Vaultify is a PyQt5 application designed to encrypt and decrypt files within a chosen folder. This app offers an easy way to protect your sensitive data from unauthorized access.
 
 ## Features
 
@@ -31,13 +31,13 @@ Vaultify is a PyQt5 application designed to encrypt and decrypt files within a c
 
 ## Credits
 
-- **Project Leader**: Abdo Raz (BEDFTB) - [GitHub: IGNRaz](https://github.com/IGNRaz)
-- **Co-Leader & UI Developer**: Zaid Alsalh (FEDFTB) - [GitHub: zaedalsalh](https://github.com/zaedalsalh)
+- **Project Leader & Developer**:
+-  Abdo Raz (BEDFTB) - [GitHub: IGNRaz](https://github.com/IGNRaz)
+- **Co-Leader & UI Developer**:
+- Zaid Alsalh (FEDFTB) - [GitHub: zaedalsalh](https://github.com/zaedalsalh)
 
 ## Disclaimer
 
 This app was developed by beginner-level programmers, so you might encounter some bugs or issues. Use it at your own risk.
 
-## License
 
-[Include your license type here, e.g., MIT License]
