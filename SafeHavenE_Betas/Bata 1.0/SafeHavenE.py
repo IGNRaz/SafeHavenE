@@ -15,7 +15,7 @@ from PyQt5.QtGui import QPixmap, QIcon
 import re 
 
 #كلاسات و دوال
-class VaultifyApp(QWidget):
+class SafeHavenE(QWidget):
     #main
     def __init__(self):
         super().__init__()
@@ -29,7 +29,7 @@ class VaultifyApp(QWidget):
     #ui
     def initUI(self):
         
-        self.setWindowTitle("Vaultify V:1.0")
+        self.setWindowTitle("SafeHavenE V:1.0")
         self.setGeometry(100, 100, 500,300)
         
         layout = QVBoxLayout()
@@ -191,6 +191,6 @@ if __name__ == '__main__':
     #إنشاء تطبيق 
     app = QApplication(sys.argv)
     #إنشاء widget
-    ex = VaultifyApp()
+    ex = SafeHavenE()
     #تشغيل التطبيق
     sys.exit(app.exec_())

@@ -20,7 +20,7 @@ import re
 
 
 #كلاسات و دوال
-class VaultifyApp(QWidget):
+class SafeHavenE(QWidget):
     #main
     def __init__(self):
         super().__init__()
@@ -34,7 +34,7 @@ class VaultifyApp(QWidget):
     #ui
     def initUI(self):
         
-        self.setWindowTitle("Vaultify V:1.0")
+        self.setWindowTitle("SaveHavenE V:1.0")
         self.setGeometry(100, 100, 500,300)
         
         layout = QVBoxLayout()
@@ -81,6 +81,7 @@ class VaultifyApp(QWidget):
         if folder:
             self.folder_input.setText(folder)
 
+    #pass cheak :3
     def passcheak(self, password):
  
       if len(password) < 8:
@@ -95,7 +96,7 @@ class VaultifyApp(QWidget):
          QMessageBox.warning(self, 'Error', 'Password should have at least one uppercase letter.')
          return False
 
-      if not re.search(r'[!@#$%^&*(),.?":{}|<>]', password):
+      if not re.search(r'[!@#$%&]', password):
           QMessageBox.warning(self, 'Error', 'Password should have at least one symbol.')
           return False
 
@@ -118,8 +119,8 @@ class VaultifyApp(QWidget):
         if not os.path.exists(os.path.join(folder, "thekey.key")):
             # إنشاء كلمة سر مشفرة
             hashed_password = hashlib.sha256(password.encode()).hexdigest()
-            with open(os.path.join(folder, "password.txt"), "w") as passfile:
-                passfile.write(hashed_password)
+           # with open(os.path.join(folder, "password.txt"), "w") as passfile:
+              #  passfile.write(hashed_password)
 
             # إنشاء مفتاح
             key = Fernet.generate_key()
@@ -136,15 +137,13 @@ class VaultifyApp(QWidget):
             return
 
         self.encrypt_files(files, key)
-        QMessageBox.information(self, 'Success', 'New files encrypted successfully.')
+        QMessageBox.information(self, 'Success', 'New files encrypted.')
         
     #فك تشفير
     def decrypt(self):
         folder = self.folder_input.text()
         password = self.pass_input.text()
         
-        
-    
         #في حال ماكان في ملف 
         if not os.path.exists(folder):
             QMessageBox.warning(self, 'Error', 'No Foolder with that name please create one or choose an exsiting one.')
@@ -235,6 +234,6 @@ if __name__ == '__main__':
     #إنشاء تطبيق 
     app = QApplication(sys.argv)
     #إنشاء widget
-    w = VaultifyApp()
+    w = SafeHavenE()
     #تشغيل التطبيق
     sys.exit(app.exec_())
