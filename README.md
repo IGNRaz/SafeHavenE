@@ -1,6 +1,6 @@
 # Vaultify V:1.0
 
-Vaultify is a PyQt5 application designed to encrypt and decrypt files within a chosen folder. This app offers an easy way to protect your sensitive data from unauthorized access, whether from curious children or others.
+Vaultify is a PyQt5 application designed to encrypt and decrypt files within a chosen folder. This app offers an easy way to protect your sensitive data from unauthorized access.
 
 ## Features
 
