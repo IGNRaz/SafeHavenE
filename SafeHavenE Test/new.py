@@ -59,6 +59,7 @@ class SafeHavenE(QWidget):
         self.choos.setIcon(QIcon(r'C:\\Users\\DELL\\Downloads\\folder-open.png'))
         self.choos.clicked.connect(self.create)
         layout.addWidget(self.choos)
+    
 
         self.encrypt_button = QPushButton(' Encrypt  ', self)
         self.encrypt_button.setIcon(QIcon(r'c:\\Users\\DELL\\Downloads\\binary-lock.png'))
