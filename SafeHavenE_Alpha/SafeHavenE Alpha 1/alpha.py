@@ -56,8 +56,7 @@ class SafeHavenE:
             if self.attempts >= self.max_attempts:
                 self.start_timer()
 
-    def start_timer(self):
-        QTimer.singleShot(self.timer_duration * 1000, self.reset_attempts)
+    
 
     def reset_attempts(self):
         self.attempts = 0
