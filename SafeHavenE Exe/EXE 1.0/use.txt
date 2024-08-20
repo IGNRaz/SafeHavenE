@@ -26,3 +26,6 @@ pyqt5:
 يوتيوب + مراجع دوكيومنت 
 https://youtu.be/RL9nGmv3uSU?si=KvBHOLNq9LiQafrl
 https://youtu.be/f_9NBdSAo-g?si=IZIhIN8J4HzLNrXp
+
+erd :
+     eraser
