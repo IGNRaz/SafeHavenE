@@ -80,7 +80,7 @@ class SafeHavenE(QWidget):
     def create(self):
         folder = QFileDialog.getExistingDirectory(self, 'Select Folder')
         if folder:
-            self.folder_input.setText(folder)
+            self.folder_input.setText(folder) 
 
     #pass cheak :3
     def passcheak(self, password):
