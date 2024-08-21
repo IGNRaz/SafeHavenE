@@ -119,11 +119,10 @@ class SafeHavenE(QWidget):
         if not os.path.exists(folder):
             os.makedirs(folder)
 
-        # Database connection
         conn = sqlite3.connect('password.db')
         c = conn.cursor()
 
-        # Check if the password for this folder already exists
+        
         c.execute("SELECT hashed_password FROM pass WHERE folder=?", (folder,))
         row = c.fetchone()
 
