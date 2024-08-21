@@ -142,13 +142,17 @@ class SafeHavenE(QWidget):
 
 
         #DB
-
-
-
+        #conn db
+        #cursser,contt
+        #c.exucte SELECT hashed_password FROM passwords WHERE folder=? for folder
+        row=c.fetchone()
 
 
         if row is None:
-            hashed_password = hashlib.sha256(password.encode()).hexdigest()
+           hashed_password = hashlib.sha256(password.encode()).hexdigest()
+            #INSERT INTO passwords (folder, hashed_password) VALUES (?, ?)", (folder, hashed_password))
+            #conn.commit()
+
 
 
             # إنشاء مفتاح
@@ -185,10 +189,11 @@ class SafeHavenE(QWidget):
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
         #قي حال تحقق بفك
 
-        #DB  
-
+       #DB  
+       #same as
        #####
-        if row is None:
+       row = c.fetchone()
+       if row is None:
             QMessageBox.warning(self, 'Error', 'No password found for this folder.')
             conn.close()
             return
