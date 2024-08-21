@@ -13,12 +13,13 @@ def db():
     conn=sqlite3.connect('password.db')
     c=conn.cursor()
     
-    c.execute('''create table if not exists pass ( folder text primary key, hashed_password)
+    c.execute('''create table if not exists pass ( folder text primary key, hashed_password text)
                    
                    ''')
         
     conn.commit()
-    c.execute("select * from pass")   
+    conn.close()
+     
 
 
 class SafeHavenE(QWidget):
@@ -29,7 +30,7 @@ class SafeHavenE(QWidget):
         self.attempts = 0
         self.max_attempts = 3
         self.timer_duration = 60 * 5
-
+        db()
     def initUI(self):
         self.setWindowTitle("SaveHavenE V:1.0")
         self.setGeometry(100, 100, 500, 300)
