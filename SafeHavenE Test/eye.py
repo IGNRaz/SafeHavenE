@@ -6,6 +6,19 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButto
 from PyQt5.QtCore import QTimer, QSize , Qt
 from PyQt5.QtGui import QPixmap, QIcon
 import re
+import sqlite3
+ 
+
+def db():
+    conn=sqlite3.connect('password.db')
+    cursor=conn.cursor()
+    
+    cursor.execute('''create table if not exists pass ( folder text primary key, hashed_password)
+                   
+                   ''')
+        
+    conn.commit()
+    cursor.execute("select * from pass")   
 
 
 class SafeHavenE(QWidget):
