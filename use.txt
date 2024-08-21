@@ -29,3 +29,7 @@ https://youtu.be/f_9NBdSAo-g?si=IZIhIN8J4HzLNrXp
 
 erd :
      eraser
+
+
+SQLite3 
+coursera + youtube + IUSR(University)

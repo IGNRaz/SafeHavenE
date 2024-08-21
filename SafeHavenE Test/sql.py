@@ -11,13 +11,14 @@ from cryptography.fernet import Fernet
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QMessageBox, QVBoxLayout , QFileDialog , QHBoxLayout
 from PyQt5.QtCore import QTimer
 from PyQt5.QtCore import Qt
+import sqlite3
 from PyQt5.QtGui import QPixmap, QIcon , QCursor
 import re 
 
 
 
-
-
+def database():
+    return
 
 
 #كلاسات و دوال
@@ -93,10 +94,10 @@ class SafeHavenE(QWidget):
         def toggle_password_visibility(self):
             if self.toggle_pass_btn.isChecked():
                self.pass_input.setEchoMode(QLineEdit.Normal)
-               self.toggle_pass_btn.setIcon(QIcon('eye_closed_icon_path_here'))  # Replace with your eye closed icon path
+               self.toggle_pass_btn.setIcon(QIcon('eye_closed_icon_path_here')) 
             else:
                self.pass_input.setEchoMode(QLineEdit.Password)
-               self.toggle_pass_btn.setIcon(QIcon('eye_icon_path_here'))  # Replace with your eye icon path
+               self.toggle_pass_btn.setIcon(QIcon('eye_icon_path_here'))  
 
 
     def create(self):
@@ -138,12 +139,17 @@ class SafeHavenE(QWidget):
         if not os.path.exists(folder):
             os.makedirs(folder)
 
-        # التحقق من وجود المفتاح
-        if not os.path.exists(os.path.join(folder, "thekey.key")):
-            # إنشاء كلمة سر مشفرة
+
+
+        #DB
+
+
+
+
+
+        if row is None:
             hashed_password = hashlib.sha256(password.encode()).hexdigest()
-            with open(os.path.join(folder, "password.txt"), "w") as passfile:
-               passfile.write(hashed_password)
+
 
             # إنشاء مفتاح
             key = Fernet.generate_key()
@@ -178,8 +184,17 @@ class SafeHavenE(QWidget):
         #التاكد من الكلمة اذا كانت نفس الكلمة المشفرة بلملف
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
         #قي حال تحقق بفك
-        with open(os.path.join(folder, "password.txt"), "r") as passfile:
-            stored_hashed_password = passfile.read()
+
+        #DB  
+
+       #####
+        if row is None:
+            QMessageBox.warning(self, 'Error', 'No password found for this folder.')
+            conn.close()
+            return
+          
+        stored_hashed_password = row[0]
+        conn.close()
 
         if hashed_password == stored_hashed_password:
             self.attempts = 0
