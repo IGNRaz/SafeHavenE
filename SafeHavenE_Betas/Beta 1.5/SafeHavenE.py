@@ -10,7 +10,7 @@ import sqlite3
  
 
 def db():
-    conn=sqlite3.connect('password.db')
+    conn=sqlite3.connect('.password.db')
     c=conn.cursor()
     
     c.execute('''create table if not exists pass ( folder text primary key, hashed_password text)
