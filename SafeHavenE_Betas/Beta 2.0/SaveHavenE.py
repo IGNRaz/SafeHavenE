@@ -3,7 +3,7 @@ import os
 import hashlib
 from cryptography.fernet import Fernet
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QMessageBox, QVBoxLayout, QFileDialog, QHBoxLayout, QToolButton 
-from PyQt5.QtCore import QTimer, QSize , Qt
+from PyQt5.QtCore import QTimer, QSize, Qt
 from PyQt5.QtGui import QPixmap, QIcon
 import re
 import sqlite3
@@ -24,8 +24,9 @@ def db():
 
 class SafeHavenE(QWidget):
     def __init__(self):
+        
         super().__init__() 
-        self.setWindowIcon(QIcon('C:\\Users\\ZaidAlsalh\\Desktop\\shield-keyhole'))
+        self.setWindowIcon(QIcon('C:\\Users\\DELL\\Desktop\\SafeHavenE\\shield-keyhole'))
         self.initUI()
         self.attempts = 0
         self.max_attempts = 3
@@ -38,7 +39,8 @@ class SafeHavenE(QWidget):
         
         
         image_label = QLabel(self)
-        pixmap = QPixmap("C:\\Users\\ZaidAlsalh\\Documents\\GitHub\\SafeHavenE\\Used pics\\Frame 13.png")
+        
+        pixmap = QPixmap("C:\\Users\\DELL\\Desktop\\SafeHavenE\\Used pics\\Frame 13.png")
         scaled_pixmap = pixmap.scaled(500, 300, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
         image_label.setGeometry(0,0,500,300)
         image_label.setPixmap(scaled_pixmap)
@@ -48,14 +50,14 @@ class SafeHavenE(QWidget):
        
 
         self.encrypt_button = QPushButton(' Encrypt  ', self)
-        self.encrypt_button.setIcon(QIcon(r'C:\\Users\\ZaidAlsalh\\Documents\\GitHub\\SafeHavenE\\Used pics\\binary-lock.png'))
+        self.encrypt_button.setIcon(QIcon(r'C:\\Users\\DELL\\Desktop\\SafeHavenE\\Used pics\\binary-lock.png'))
         self.encrypt_button.setStyleSheet('background-color:#E85555; color:black; font-size:19px; border:1px solid black ; border-radius:6px;')
         self.encrypt_button.clicked.connect(self.wencrypt)
         self.encrypt_button.setGeometry(126,250,121,31)
         self.encrypt_button.setToolTip('تشفير')
 
         self.decrypt_button = QPushButton('Decrypt', self)
-        self.decrypt_button.setIcon(QIcon(r'C:\\Users\\ZaidAlsalh\\Documents\\GitHub\\SafeHavenE\\Used pics\\lock-open-alt.png'))
+        self.decrypt_button.setIcon(QIcon(r'C:\\Users\\DELL\\Desktop\\SafeHavenE\\Used pics\\lock-open-alt.png'))
         self.decrypt_button.setStyleSheet('background-color:#B6EEC6; color:black; font-size:19px; border:1px solid black ; border-radius:6px;')
         self.decrypt_button.clicked.connect(self.wdecrypt)
         self.decrypt_button.setGeometry(257,250,121,31)
@@ -110,10 +112,10 @@ class SafeHavenE(QWidget):
     def wencrypt(self):
         page1 = QWidget()
         page1.setWindowTitle("SaveHavenE V:1.0")
-        page1.setWindowIcon(QIcon('C:\\Users\\ZaidAlsalh\\Documents\\GitHub\\SafeHavenE\\Used pics\\shield-keyhole'))
+        page1.setWindowIcon(QIcon('C:\\Users\\DELL\\Desktop\\SafeHavenE\\Used pics\\shield-keyhole'))
         page1.setGeometry(1003, 350, 500, 300)
         image_label = QLabel(page1)
-        pixmap = QPixmap("C:\\Users\\ZaidAlsalh\\Documents\\GitHub\\SafeHavenE\\Used pics\\Frame 14.png")
+        pixmap = QPixmap("C:\\Users\\DELL\\Desktop\\SafeHavenE\\Used pics\\Frame 14.png")
         scaled_pixmap = pixmap.scaled(500, 300, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
         image_label.setGeometry(0,0,500,300)
         image_label.setPixmap(scaled_pixmap)
@@ -123,7 +125,7 @@ class SafeHavenE(QWidget):
 
         button1 = QPushButton(" Encrypt",page1)
         button1.setGeometry(325 ,182 ,121,29 )
-        button1.setIcon(QIcon(r'C:\\Users\\ZaidAlsalh\\Documents\\GitHub\\SafeHavenE\\Used pics\\binary-lock.png'))
+        button1.setIcon(QIcon(r'C:\\Users\\DELL\\Desktop\\SafeHavenE\\Used pics\\binary-lock.png'))
         button1.setStyleSheet('background-color:#E85555; color:black; font-size:20px; border:1px solid black ; border-radius:6px;')
         button1.clicked.connect(self.encrypt)
         
@@ -141,7 +143,7 @@ class SafeHavenE(QWidget):
         
         
         self.choos = QPushButton('', page1)
-        self.choos.setIcon(QIcon(r'C:\\Users\\ZaidAlsalh\\Documents\\GitHub\\SafeHavenE\\Used pics\\folder-open.png'))
+        self.choos.setIcon(QIcon(r'C:\\Users\\DELL\\Desktop\\SafeHavenE\\Used pics\\folder-open.png'))
         self.choos.setStyleSheet('background-color:#B6EEC6; color:black; font-size:17px; border:0.5px solid black ; border-radius:5px;')
         self.choos.setGeometry(440,95,38,33)
         self.choos.setToolTip('اضغط لتحميل ملف')
@@ -159,22 +161,22 @@ class SafeHavenE(QWidget):
         
         
     def wdecrypt(self):
-        print('zaed')
+        
         page2 = QWidget()
         page2.setWindowTitle("SaveHavenE V:1.0")
-        page2.setWindowIcon(QIcon('C:\\Users\\ZaidAlsalh\\Documents\\GitHub\\SafeHavenE\\Used pics\\shield-keyhole'))
+        page2.setWindowIcon(QIcon('C:\\Users\\DELL\\Desktop\\SafeHavenE\\Used pics\\shield-keyhole'))
         page2.setGeometry(1003, 350, 500, 300)
         
         
         image_label = QLabel(page2)
-        pixmap = QPixmap("C:\\Users\\ZaidAlsalh\\Documents\\GitHub\\SafeHavenE\\Used pics\\Frame 133.png")
+        pixmap = QPixmap("C:\\Users\\DELL\\Desktop\\SafeHavenE\\Used pics\\Frame 133.png")
         scaled_pixmap = pixmap.scaled(500, 300, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
         image_label.setGeometry(0,0,500,300)
         image_label.setPixmap(scaled_pixmap)
         
         button2 = QPushButton(" Decrypt",page2)
         button2.setGeometry(45 ,182 ,121,29 )
-        button2.setIcon(QIcon(r'C:\\Users\\ZaidAlsalh\\Documents\\GitHub\\SafeHavenE\\Used pics\\lock-open-alt.png'))
+        button2.setIcon(QIcon(r'C:\\Users\\DELL\\Desktop\\SafeHavenE\\Used pics\\lock-open-alt.png'))
         button2.setStyleSheet('background-color:#B6EEC6; color:black; font-size:20px; border:1px solid black ; border-radius:6px;')
         button2.clicked.connect(self.decrypt )
 
@@ -193,7 +195,7 @@ class SafeHavenE(QWidget):
         
         
         self.choos = QPushButton('', page2)
-        self.choos.setIcon(QIcon(r'C:\\Users\\ZaidAlsalh\\Documents\\GitHub\\SafeHavenE\\Used pics\\folder-open.png'))
+        self.choos.setIcon(QIcon(r'C:\\Users\\DELL\\Desktop\\SafeHavenE\\Used pics\\folder-open.png'))
         self.choos.setStyleSheet('background-color:#B6EEC6; color:black; font-size:17px; border:0.5px solid black ; border-radius:5px;')
         self.choos.setGeometry(165,95,38,33)
         self.choos.setToolTip('اضغط لتحميل ملف')
@@ -333,13 +335,13 @@ class SafeHavenE(QWidget):
                 thefile.write(contents_decrypted)
             os.remove(file)
 
-    def toggle_password_visibility(self):
-        if self.pass_input.echoMode() == QLineEdit.Password:
-            self.pass_input.setEchoMode(QLineEdit.Normal)
-            self.eye_button.setIcon(QIcon('C:\\Users\\ZaidAlsalh\\Desktop\\view.png'))
-        else:
-            self.pass_input.setEchoMode(QLineEdit.Password)
-            self.eye_button.setIcon(QIcon('C:\\Users\\ZaidAlsalh\\Desktop\\hide.png'))
+    # def toggle_password_visibility(self):
+    #     if self.pass_input.echoMode() == QLineEdit.Password:
+    #         self.pass_input.setEchoMode(QLineEdit.Normal)
+    #         self.eye_button.setIcon(QIcon('C:\\Users\\ZaidAlsalh\\Desktop\\view.png'))
+    #     else:
+    #         self.pass_input.setEchoMode(QLineEdit.Password)
+    #         self.eye_button.setIcon(QIcon('C:\\Users\\ZaidAlsalh\\Desktop\\hide.png'))
     
         
 if __name__ == '__main__':

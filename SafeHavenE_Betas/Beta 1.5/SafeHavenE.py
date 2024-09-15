@@ -19,7 +19,7 @@ def db():
         
     conn.commit()
     conn.close()
-     
+    
 
 
 class SafeHavenE(QWidget):
@@ -113,12 +113,18 @@ class SafeHavenE(QWidget):
     def encrypt(self):
         folder = self.folder_input.text()
         password = self.pass_input.text()
+        
+        if not os.path.exists(folder):
+            QMessageBox.warning(self, 'Error', 'No folder with that name. Please create one or choose an existing one.')
+            return
 
         if not self.passcheak(password):
             return
 
         if not os.path.exists(folder):
             os.makedirs(folder)
+
+        
 
         conn = sqlite3.connect('password.db')
         c = conn.cursor()
@@ -161,6 +167,8 @@ class SafeHavenE(QWidget):
 
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
+        if not self.passcheak(password):
+            return
         
         conn = sqlite3.connect('password.db')
         c = conn.cursor()
